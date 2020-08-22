@@ -1,5 +1,6 @@
 package com.customer.test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Matchers.anyInt;
@@ -78,4 +79,12 @@ class CustomerServiceImplTest {
 	}
 	
 
+	@Test
+	public void updateCustomerTest() throws AppException{
+	String customername = "Anutomerd";
+	Customer customer = new Customer();
+	customer.setCustomername(customername);
+	when(customerMongoRepository.save(customer)).thenReturn(customer);
+	assertEquals(customer, customerServiceImpl.updateCustomer(customer));
+	}
 }
