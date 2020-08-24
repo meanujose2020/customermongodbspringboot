@@ -23,7 +23,6 @@ import com.customer.entity.Customer;
 import com.customer.entity.CustomerDTO;
 import com.customer.repository.CustomerMongoRepository;
 import com.customer.service.CustomerServiceImpl;
-import com.vz.cpi.exceptions.AppException;
 
 class CustomerServiceImplTest {
 
@@ -38,7 +37,7 @@ class CustomerServiceImplTest {
 	}
 
 	@Test
-	void testFindByCustomerNumber() throws AppException {
+	void testFindByCustomerNumber() throws Exception {
 		Customer customer = new Customer();
 		customer.setCustomerNumber(45);
 		customer.setCustomername("TOM");
@@ -50,7 +49,7 @@ class CustomerServiceImplTest {
 	}
 	
 	@Test
-	public void createCustomerTest() throws AppException {
+	public void createCustomerTest() throws Exception {
 		Customer user = new Customer();
 		user.setCustomerNumber(24);
 		user.setCustomername("Anu");
@@ -60,7 +59,7 @@ class CustomerServiceImplTest {
 	}
 	
 	@Test
-	public void getAllCustomerDetailsTest() throws AppException {
+	public void getAllCustomerDetailsTest() throws Exception {
 		Customer customer = new Customer();
 		customer.setCustomerNumber(22);
 		customer.setCustomername("TOM");
@@ -71,7 +70,7 @@ class CustomerServiceImplTest {
 	}
 	
 	@Test
-	public void deleteCustomerTest() throws AppException {
+	public void deleteCustomerTest() throws Exception {
 		Customer customer = new Customer();
 		when(customerMongoRepository.findByCustomerNumber(anyInt())).thenReturn(customer);
 		customerServiceImpl.deleteCustomer(customer.getCustomerNumber());
@@ -80,7 +79,7 @@ class CustomerServiceImplTest {
 	
 
 	@Test
-	public void updateCustomerTest() throws AppException{
+	public void updateCustomerTest() throws Exception{
 	String customername = "Anutomerd";
 	Customer customer = new Customer();
 	customer.setCustomername(customername);
